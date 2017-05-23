@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentManager;
  */
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
-    protected abstract Fragment createFragment();
+    protected abstract Fragment createFragment();//这有问题吧 怎么可能没用到
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
         Fragment fragment=fm.findFragmentById(R.id.fragment_container);
 
         if(fragment==null){
-            fragment=new CrimeFragment();
+            fragment=createFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container,fragment)
                     .commit();//创造并提交一个fragment事务
